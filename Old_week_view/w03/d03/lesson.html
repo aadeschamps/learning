@@ -1,0 +1,53 @@
+<!--
+
+	document.creatElement("element") = creates the element on the page
+
+	.insertBefore(to be added, before this);
+
+	.removeChild(element);
+	
+
+	can use array.forEach(some function(elem) ) to loop through array and setting elem equal to each elemenet in the array
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM exercise</title>
+</head>
+<body>
+	<script>
+	var heading = document.createElement("h1");
+	heading.innerHTML = "Lasagna";
+	var body = document.querySelector("body");
+	body.appendChild(heading);
+
+	var uList = document.createElement("ul");
+	var item1 = document.createElement("li");
+	item1.innerHTML = "Pasta";
+	var item2 = document.createElement("li");
+	item2.innerHTML = "Sauce";
+
+	uList.appendChild(item1);
+	uList.appendChild(item2);
+
+	body.appendChild(uList);
+
+	var header2 = document.createElement("h3");
+	header2.innerHTML = "Ingredients Needed:";
+	body.insertBefore(header2, uList);
+
+	uList.removeChild(item1);
+	var item3 = document.createElement("li");
+	item3.innerHTML = "Lasagna Noodles";
+	uList.insertBefore(item3, item2)
+
+	var cheese = document.createElement("li");
+	cheese.innerHTML = "Cheese";
+	uList.appendChild(cheese);
+
+
+	</script>
+</body>
+</html>

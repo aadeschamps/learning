@@ -1,0 +1,66 @@
+<html>
+<body>
+	<canvas id="person" width="800" height="800"></canvas>
+	<script>
+		var canvas = document.getElementById("person");
+		var ctx = canvas.getContext("2d");
+		
+		ctx.beginPath();
+		ctx.arc(250, 150, 61, 0, Math.PI*1, true);
+		ctx.fillStyle= 'Blue';
+		ctx.fill();
+		ctx.closePath();
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(250, 150, 60, 0, Math.PI*1, false);
+		ctx.fillStyle= 'lightsalmon';
+		ctx.fill();
+		ctx.closePath()
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.fillStyle= 'lightsalmon';
+		ctx.arc(100, 150, 15, 0, Math.PI*2, true);
+		ctx.fill();
+		ctx.closePath()
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.fillStyle= 'lightsalmon';
+		ctx.arc(350, 390, 15, 0, Math.PI*2, true);
+		ctx.fill();
+		ctx.closePath();
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.fillStyle = "black";
+		ctx.fillRect(200, 210, 100, 30); // top
+		ctx.fillRect(225,240, 50, 200); // middle
+		ctx.fillRect(210, 440, 80, 30); // bottom
+		ctx.fillRect(210, 470, 20, 150); // left leg
+		ctx.fillRect(270, 470, 20, 150); //right leg
+		ctx.closePath();
+		
+		ctx.beginPath();
+		ctx.fillStyle = "blue";
+		ctx.fillRect(190, 620, 40, 20); // left foot
+		ctx.fillStyle = "blue";
+		ctx.closePath();
+		
+		ctx.beginPath();
+		ctx.fillRect(270, 620, 40, 20); //right foot
+		ctx.closePath();
+		
+		ctx.beginPath();
+		ctx.moveTo(200,225);
+		ctx.lineTo(150, 300);
+		ctx.lineTo(100,165);
+		ctx.stroke();
+		ctx.moveTo(300, 225);
+		ctx.lineTo(350, 270);
+		ctx.lineTo(350, 375);
+		ctx.stroke();
+	</script>
+</body>
+</html>

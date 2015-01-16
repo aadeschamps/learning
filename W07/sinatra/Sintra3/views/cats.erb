@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cats</title>
+</head>
+<body>
+	<% heights = (height...height+15) %>
+	<% i = 0
+	while i < 15 %>
+		<img src="http://placekitten.com/g/<%=width %>/<%=height + (i * 10)%>">
+		<% i+=1
+	end %>
+</body>
+</html>

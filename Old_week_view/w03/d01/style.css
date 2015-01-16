@@ -1,0 +1,72 @@
+h1{
+	color: red;
+}
+ul{
+	border: 3px dotted plum;
+	border-radius: 3px;
+}
+li{
+	border: 3px dashed blanchedalmond;
+}
+a{
+	text-decoration: none;
+}
+.mammal{
+	background-color: lavenderBlush;
+	font-weight: bold;
+}
+.bird{
+	background-color: lightGray;
+	font-style: italics;
+}
+.fish{
+	background-color: lightYellow;
+	text-decoration: underline;
+}
+#mouse{
+	color: gray;
+}
+#canary{
+	color: orangeRed;
+}
+#penguin{
+	color: black;
+}
+#salmon{
+	color: salmon;
+}
+#cat{
+	color: sienna;
+}
+#goldfish{
+	color: gold;
+}
+#dog{
+	color: tan;
+}
+#sheep{
+	color: steelBlue;
+}
+#parakeet{
+	color: lime;
+}
+#tuna{
+	color: purple;
+}
+header{
+	border: 3px dashed yellow;
+	background-color: gray;
+}
+footer{
+	border: 3px dotted DarkSalmon;
+	text-align: center;
+	background-color: DeepPink;
+}
+#animals{
+	border: 3px solid MediumAquaMarine;
+	background-color: brown;
+}
+#plants{
+	border: 5px dotted Tomato;
+	background-color: SpringGreen;
+}

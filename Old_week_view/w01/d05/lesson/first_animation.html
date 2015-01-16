@@ -1,0 +1,49 @@
+<html>
+<body>
+  <canvas id="the_canvas" width="400" height="400"></canvas>
+  <script>
+    var canvas = document.getElementById('the_canvas');
+    var ctx = canvas.getContext('2d');
+    var random = function(){
+    	var colors = ["red","blue","green","brown","orange","yellow"];
+    	ran_color = colors[Math.floor( Math.random() * colors.length)];
+    	return ( ran_color );
+    }
+
+    var x_position = 0;
+    var y_position = 0;
+    var x_position1 = 0;
+    var y_position1 = 0;
+    
+    var draw = function(x,y, color){
+    	ctx.fillStyle = color;
+    	ctx.fillRect(x%400, y%400, 100, 100);
+
+    }    
+    var draw2 = function(){
+    	draw(x_position,y_position,random());
+    	x_position+=100;
+    	y_position+=100;
+    }
+    setInterval(draw2, 200);
+    
+    var draw_more = function(x,y, color){
+    	ctx.fillStyle = color;
+    	ctx.fillRect( ( 200 - (x%300) ), y%300, 100, 100);
+    }
+
+    var draw_more2 = function(x,y, color){
+    	ctx.fillStyle = color;
+    	ctx.fillRect( ( 200 - (x%300) ) + 100, y%300 + 100, 100, 100);
+    }
+
+    var draw_more_interval = function(){
+    	draw_more(x_position1, y_position1, random());
+    	draw_more2(x_position1, y_position1, random());
+    	x_position1+=100;
+    	y_position1+=100;
+    }
+    setInterval(draw_more_interval, 200);
+  </script>
+</body>
+</html>

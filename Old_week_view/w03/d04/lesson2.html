@@ -1,0 +1,77 @@
+
+<!--
+	http://www.mrjohnsons.co.uk/uploads/small/copy_hamster_nutc.jpg
+
+	http://images5.fanpop.com/image/photos/29600000/Hamster-weight-Lifting-hamsters-29682128-450-307.jpg
+
+	http://collegecandy.files.wordpress.com/2013/10/hamster-on-a-piano-o.gif?w=320&h=240
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HAMSTERS!</title>
+	<style>
+		img{
+			height: 500px;
+			width: 600px;
+			display: block;
+			margin: 0 auto;
+		}
+		div{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<img src="http://www.mrjohnsons.co.uk/uploads/small/copy_hamster_nutc.jpg" />
+	<div>
+	<input id="radio1" type="radio" name="hamster" checked="true">First </input>
+	<input id="radio2" type="radio" name="hamster">Second</input>
+	<input id="radio3" type="radio" name="hamster">Third</input>
+	<button>Change Image</button>
+	</div>
+
+	<script type="text/javascript">
+		var img = document.querySelector("img");
+		var radio1 = document.getElementById("radio1");
+		var radio2 = document.getElementById("radio2");
+		var radio3 = document.getElementById("radio3");
+		var button = document.querySelector("button");
+
+		var url1 = "http://www.mrjohnsons.co.uk/uploads/small/copy_hamster_nutc.jpg";
+		var url2 = "http://images5.fanpop.com/image/photos/29600000/Hamster-weight-Lifting-hamsters-29682128-450-307.jpg";
+		var url3 = "http://collegecandy.files.wordpress.com/2013/10/hamster-on-a-piano-o.gif?w=320&h=240"
+
+		var img1 = function(){
+			img.setAttribute("src",url1);
+		}
+
+		var img2 = function(){
+			img.setAttribute("src",url2);
+		}
+
+		var img3 = function(){
+			img.setAttribute("src",url3);
+		}
+
+		var buttonFunction = function(){
+			if (radio1.checked){
+				img.setAttribute("src",url1);
+			}else if (radio2.checked){
+				img.setAttribute("src",url2);
+			}else if (radio3.checked){
+				img.setAttribute("src",url3);
+			}
+
+		}
+
+		//radio1.addEventListener("click", img1);
+		//radio2.addEventListener("click", img2);
+		//radio3.addEventListener("click", img3);
+		button.addEventListener("click", buttonFunction)
+
+	</script>
+</body>
+</html>

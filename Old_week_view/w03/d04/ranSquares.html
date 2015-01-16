@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: blanchedalmond;
+		}
+		canvas{
+			display: block;
+			margin: 0 auto;
+		}
+		div{
+			text-align: center;
+		}
+		#off{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="the_canvas" width="400" height="400"></canvas>
+
+	<div>
+	<button id="one"> Draw Random Square </button>
+	<button id="many"> Star drawing random squares every 10 seconds </button>
+	<button id="off"> Turn off Animation </button>
+	</div>
+  <script>
+    var canvas = document.getElementById('the_canvas');
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = "green";
+    ctx.fillRect(0,0,canvas.width, canvas.height)
+    
+    var drawRan = function(){
+    	ranx = Math.floor(Math.random() * (canvas.width - 40));
+    	rany = Math.floor(Math.random() * (canvas.height - 40));
+    	ctx.fillStyle = "blue";
+    	ctx.fillRect(ranx, rany, 40, 40);
+    }
+    var startTimer = function(){
+    	timer = setInterval(drawRan, 100);
+    	buttonMany.style.display = "none";
+    	buttonOff.style.display = "inline";
+    }
+
+    var endTimer = function(){
+    	clearInterval(timer);
+    	buttonMany.style.display = "inline";
+    	buttonOff.style.display = "none";
+
+    }
+    var timer;
+    var buttonOne = document.getElementById("one");
+    var buttonMany = document.getElementById("many");
+    var buttonOff = document.getElementById("off");
+    buttonOne.addEventListener("click", drawRan);
+    buttonMany.addEventListener("click", startTimer);
+    buttonOff.addEventListener("click", endTimer);
+  </script>
+</body>
+</html>

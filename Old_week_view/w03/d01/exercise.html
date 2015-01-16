@@ -1,0 +1,72 @@
+<!-- 
+document = whole html page
+^.querySelector("selector") = returns first element with that selector
+^.querySelectorAll("selector") = returns all elements in an array
+.innerText = returns the text in chrome, can change with = sign
+.innerHTML = same thing but for firefox
+.setAttribute("attr", "content") = changes given attribute to content
+
+	-->
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Exercise Page</title>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+
+<body>
+
+	<h1>Welcome Princess Peach Students!</h1>
+	<h2>This is an introduction to CSS</h2>
+	<h2 id="header"> Flora and Fauna </h2>
+	<header id="animals"><h3> Central Nervous System </h3> </header>
+	<ul>
+		<li class="mammal" id="mouse">Mouse</li>
+		<li class="bird" id="canary">Canary</li>
+		<li class="bird" id="penguin">Penguin</li>
+		<li class="fish" id="salmon">Salmon</li>
+		<li class="mammal" id="cat">Cat</li>
+		<li class="fish" id="goldfish">Goldfish</li>
+		<li class="mammal" id="dog">Dog</li>
+		<li class="mammal" id="sheep">Sheep</li>
+		<li class="bird" id="parakeet">
+			<a href="http://en.wikipedia.org/wiki/Parakeet">Parakeet</a>
+		</li>
+		<li class="fish" id="tuna">Tuna</li>
+	</ul>
+	<img src="http://upload.wikimedia.org/wikipedia/commons/d/d3/Preening_Dodo.jpg" height="300px" width="300px">
+	<div id="plants"><h3>Photosynthesis</h3></div>
+	<ul> 
+		<li>Dogwood Tree</li>
+		<li>Oak Tree</li>
+		<li>Saguaro</li>
+		<li>Kelp</li>
+		<li>Vanue Fly Trap</li>
+		<li>Ent</li>
+	</ul>
+	
+	<input type="checkbox" id="check">Check this</input>
+	<button onclick="">Click this too!</button>
+
+	<footer id="footer"><p> Copyright 2014 </p></footer>
+
+	<script>
+		var button = document.querySelector("button");
+		button.addEventListener("click", function(){
+			if(document.querySelector("input").checked){
+				alert("Checked");
+			}else{
+				alert("Unchecked");
+			}
+		});
+	</script>
+</body>
+
+
+</html>
+

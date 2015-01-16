@@ -1,0 +1,20 @@
+<html>
+<body>
+
+<form action="/add" method="post">
+  <input type="text" name="first">
+  <input type="text" name="last">
+  <input type="text" name="email">
+  <input type="submit" value="Add">
+</form>
+
+<% if (people.length > 0) { %>
+<ul>
+  <% people.forEach(function(person) { %>
+    <li><%= person.first_name %> <%=person.last_name%>'s email is: <%=person.email%></li>
+  <% }) %>
+</ul>
+<% } %>
+
+</body>
+</html>

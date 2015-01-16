@@ -1,0 +1,106 @@
+<html>
+<header>
+  <style>
+    canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 400px;
+    }
+    h1 {
+      text-align: center;
+    }
+  </style>
+</header>
+<body>
+  <h1> My Game! </h1>
+<canvas id="the_canvas" width="400" height="400"></canvas>
+<script>
+  var x = 190;
+  var canvas = document.getElementById('the_canvas');
+  var ctx = canvas.getContext('2d');
+  var moveRight = true;
+  var speed = 3;
+  var handleKeyDown = function(evt) {
+    if (evt.keyCode === 39) {
+      //Left arrow was pressed
+      x+=speed;
+    } else if (evt.keyCode === 37) {
+      //Left arrow was pressed
+      x-=speed;
+    }else if (evt.keyCode === 40){
+      y+=speed;
+    }else if (evt.keyCode === 38){
+      y-=speed;
+    }
+
+  }
+  //don't worry about what window is,
+  //just realize that we are telling
+  //the browser to call our handleKeyDown
+  //function defined above when a user
+  //presses a key
+  window.addEventListener('keydown',handleKeyDown,true);
+  var y = 0;
+  var z = 0;
+  var a = 200;
+  var win = 0;
+  var draw = function() {
+    //clear background
+    ctx.fillStyle = "gray";
+    ctx.fillRect(0,0, canvas.width, canvas.height);
+    /*if (moveRight === true) {
+      //move the square to the right
+      x = x + 1;
+    } else {
+      //move the square to the left
+      x = x - 1;
+    }*/
+    //make sure it doesn't go off the screen though
+    if (x > (canvas.width - 20)) {
+      x %= canvas.width;
+      x = canvas.width-20;
+    }
+    if(x <= 0){
+      x = 0;
+    }
+    if (y > (canvas.width - 20)) {
+      y %= canvas.width;
+      y = 0;
+      win++;
+    }
+    if(y <= 0){
+      y = 0;
+    }
+    z++;
+    if (z > canvas.width) {
+      z %= canvas.width;
+      z = 0;
+    }
+    if(z < 0){
+      z = canvas.width;
+    }
+    //draw square in new position
+    ctx.fillStyle = "red";
+    ctx.fillRect (x, y, 20, 20);
+    ctx.fillStyle = "blue";
+    ctx.fillRect(z, a, 20, 20);
+    console.log(win);
+    if( (y>=a) && (y<=a+20) && (x >= z) && (x <= z+20) ||
+      (y+20>=a) && (y+20<=a+20) && (x >= z) && (x <= z+20) ||
+      (y>=a) && (y<=a+20) && (x+20 >= z) && (x+20 <= z+20) ||
+      (y+20>=a) && (y+20<=a+20) && (x+20 >= z) && (x+20 <= z+20) ){
+      x=190;
+      y=0;
+      win--;
+     }
+     ctx.font = '10pt Calibri';
+     var message = "Wins: " + win;
+     ctx.fillText(message, 5, 15);
+  }
+  setInterval(draw, 20);
+</script>
+</body>
+</html>

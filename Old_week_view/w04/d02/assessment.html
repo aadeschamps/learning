@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Assessment w04 d02</title>
+</head>
+<body>
+	
+	<script>
+		var h1 = document.createElement("h1");
+		h1.innerHTML = "Top 10 songs";
+		var list = document.createElement("ul");
+		var songs = ["Blank Spaces", "All about that bass", "Take me to Church", "Shake it off", "Animals", "The heard wants what it wants", "I'm the only One", "Uptown Funk", "Habits", "Love me Harder"];
+		songs.forEach(function(song){
+			var li = document.createElement("li");
+			li.innerHTML = song;
+			list.appendChild(li);
+		})
+		var body = document.querySelector("body");
+		body.appendChild(h1);
+		body.appendChild(list);	
+	</script>
+</body>
+</html>
+

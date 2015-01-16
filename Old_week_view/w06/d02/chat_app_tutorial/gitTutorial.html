@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+	<meta charset="UTF-8">
+	<title>Chat Tutorial</title>
+	<link rel="stylesheet" href="chatTutorial.css">
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic,700italic|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<div class="wrapper">
+		<div id="github">
+			<a name="github"></a>
+			<h1>Working with Git and GitHub</h1>
+			<p><b>Git</b> is a version control system that allows you to stage and store various versions of your code. This then allows you to revert to a working version of your code, or allow others to work on it with you.</p>
+			<p><b>GitHub</b> is kind of like the social media hub of Git. It is a cloud-based site that allows users to store their code, usually for others to see and use to create other applications and websites with that code.</p>
+			<p>For now, we're going to focus on the basics of creating a <b>repository</b>, or <b>repo</b>, as well as the fundamentals of creating a repo on GitHub and adding files to that repo.</p>
+			<a name="git_local"></a>
+			<h2>Creating a Local Git Repo</h2>
+			<p>The first thing you need is to create a local repo on your hard drive. You can do this by opening your terminal and navigating to your current project file, then initializing a git repo, like so:</p>
+			<pre class="prettyprint"><code>
+  $ cd YOUR_PROJECT_FOLDER
+  $ git init
+			</pre></code>
+			<p><i>**As you may have noticed, the command for git is simply</i> <code>git</code>.</p>
+			<p>Congrats! You now have a local git repo.</p>
+
+			<a name="github_repo"></a>
+			<h2>Creating a Repo on GitHub</h2>
+			<p>First, you must, of course, create an account on <a href="http://github.com">GitHub</a>. If you are new to GitHub or have not yet done this, <a href="https://help.github.com/articles/generating-ssh-keys/#step-2-generate-a-new-ssh-key">generate an SSH key</a>. (Go ahead, we'll wait!)</p>
+			<p>Now that you are officially a GitHub member, click on the plus sign in the top right corner.</p>
+			<img src="http://i.imgur.com/5cjtHQU.png">
+			<p>Now, click "new repository".</p>
+			<img src="http://i.imgur.com/sTyDjRK.png">
+			<p>You will now see a page that will ask for your repository name and an optional description. It is usually best to make the repository name the same as the name of the folder in which your project files are stored.<p>
+			<p>When you are done with this, click the big green "Create repository" button at the bottom.</p>
+			<img src="http://i.imgur.com/yG06Hpm.png">
+			<p>Hooray! Your GitHub repo has been created.</p>
+
+			<a name="git_push"></a>
+			<h2>Adding Your Files to GitHub</h2>
+			<p>After your GitHub repo is created, you will be taken to a page that looks something like this:</p>
+			<img src="http://i.imgur.com/9Nnf7fI.png">
+			<p>While it gives you handy instructions, we suggest you follow ours. :)</p>
+			<p>Click the "SSH" button and copy that link to your clipboard.</p>
+			<p>Now, return to your terminal. In that same project folder where you initialized your repo, you will now <b>add</b> your files to be <b>staged</b>, <b>commit</b> them with a message that describes the changes (or, in this instance, that it is your first commit), and then <b>push</b> your files into the GitHub repo.</p>
+			<pre class="prettyprint"><code>
+  $ git add .
+  $ git commit -m "first commit"
+  $ git remote add origin git@github.com:YOUR_GITHUB_NAME/YOUR_GITHUB_REPO.git
+  $ git push origin master
+			</pre></code>
+			<p>Typing a period after <code>add</code> adds all of the files in the folder. The <code>-m</code> flag creates a message. This is mandatory for all commits. The message is then added in quotations, and cannot contain certain special characters.</p>
+			<p>After <code>git remote add origin</code>, replace the link in the above code with the SSH link you copied from the page.</p>
+			<p>Ta-da! Your files are now added. If all went well, upon a refresh of the page with instructions, you should see your brand new repo with the results of your new commit.</p>
+			<a name="git_best"</a>
+			<h2>Best Practices: Knowing When to Commit</h2>
+		</div>
+	</div>
+
+
+		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+</body>
+</html>

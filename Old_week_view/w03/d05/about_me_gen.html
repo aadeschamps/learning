@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>About Me Generator</title>
+</head>
+<body>
+
+	
+
+	<script>
+		var header = document.createElement("h1");
+		header.innerHTML = "Generate an About Me Page!";
+		var input_name = document.createElement("input");
+		input_name.setAttribute("placeholder","Full Name");
+		var input_pic = document.createElement("input");
+		input_pic.setAttribute("placeholder", "Image URL");
+		var input_sign = document.createElement("input");
+		input_sign.setAttribute("placeholder","Sign");
+		var input_home = document.createElement("input");
+		input_home.setAttribute("placeholder","Home Town");
+		var input_color = document.createElement("input");
+		input_color.setAttribute("placeholder","Favorite Color");
+		var submit = document.createElement("button");
+		submit.innerHTML = "Generate Page";
+		var body = document.querySelector("body");
+
+
+		var array = [header, input_name, input_pic, input_sign, input_home, input_color, submit];
+		array.forEach(function(elem){
+			elem.style.display = "block";
+			body.appendChild(elem);
+		});
+
+		var generator = function(){
+			var name = input_name.value;
+			var pic = input_pic.value;
+			var sign  = input_sign.value;
+			var home = input_home.value;
+			var color = input_color.value;
+
+			console.log(name);
+			array.forEach(function(elem){
+				body.removeChild(elem);
+			});
+
+			var new_header = document.createElement("header");
+			var header1 = document.createElement("h1");
+			header1.innerHTML = "All About " + name;
+			new_header.appendChild(header1);
+			body.appendChild(new_header);
+
+			body.style.backgroundColor = color;
+
+			var image = document.createElement("img");
+			image.setAttribute("src", pic);
+			body.appendChild(image);
+
+			var div = document.createElement("div");
+			div.style.width = "100%";
+			var inner_div_1 = document.createElement("div");
+			inner_div_1.style.width = "50%";
+			inner_div_1.style.display = "inline-block";
+			var inner_div_2 = document.createElement("div");
+			inner_div_2.style.width = "50%";
+			inner_div_2.style.display = "inline-block";
+			var p_sign = document.createElement("p");
+			p_sign.innerHTML = "Sign: " + sign;
+			var p_home = document.createElement("p");
+			p_home.innerHTML = "Hometown: " + home;
+			inner_div_1.appendChild(p_sign);
+			inner_div_2.appendChild(p_home);
+
+			div.appendChild(inner_div_1);
+			div.appendChild(inner_div_2);
+
+
+			body.appendChild(div);
+
+		}
+
+		submit.addEventListener("click", generator);
+
+
+	</script>
+</body>
+</html>
+

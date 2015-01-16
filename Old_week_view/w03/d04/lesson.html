@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TODO</title>
+</head>
+<body>
+	<input type="text">
+	<button>Add to list</button>
+	<ul>
+	</ul>
+
+	<script type="text/javascript">
+		var button = document.querySelector("button");
+		var ul = document.querySelector("ul");
+		var input = document.querySelector("input");
+
+
+		var add = function(){
+			var li = document.createElement("li");
+			li.innerHTML = input.value;
+			li.setAttribute("draggable", "true")
+			ul.appendChild(li);
+		} 
+
+		var addKey = function(evt){
+			if (evt.keyCode === 13){
+				var li = document.createElement("li");
+				li.innerHTML = input.value;
+				li.setAttribute("draggable", "true")
+				li.addEventListener("dragstart", function(){
+					ul.removeChild(li);
+				})
+				ul.appendChild(li);
+			}
+		} 
+
+
+		button.addEventListener("click", add);
+		input.addEventListener("keyup", addKey);
+
+	</script>
+</body>
+</html>

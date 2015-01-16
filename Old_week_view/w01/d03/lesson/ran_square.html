@@ -1,0 +1,19 @@
+<html>
+<body>
+  <canvas id="the_canvas" width="400" height="400" background="yellow"></canvas>
+  <script>
+    var number = parseInt(prompt("Type in how many squares you want: "))
+    var canvas = document.getElementById('the_canvas');
+    var ctx = canvas.getContext('2d');
+    var counter = 0;
+    while (counter < number){
+        var color_r = Math.floor(Math.random() * 256);
+        var color_g = Math.floor(Math.random() * 256);
+        var color_b = Math.floor(Math.random() * 256);
+        ctx.fillStyle = "rgb(" + color_r + ", " + color_g + ", " + color_b + ")";
+        ctx.fillRect(Math.random()*350, Math.random() * 350, 50, 50);
+        counter++;
+    }
+  </script>
+</body>
+</html>

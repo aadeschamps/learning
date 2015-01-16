@@ -1,0 +1,64 @@
+<html>
+<body>
+<canvas id="the_canvas" width="400" height="600"></canvas>
+<script>
+  var canvas = document.getElementById('the_canvas');
+  var ctx = canvas.getContext('2d');
+  var Ball = function(){
+    this.x = 175;
+    this.y = 50;
+    this.radius = 40;
+    this.draw = function(){
+      ctx.fillStyle = "gray";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "orange";
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 2*Math.PI, false);
+      ctx.fill();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = "blue";
+      ctx.stroke();
+      ctx.closePath();
+    }
+    this.draw2 = function(){
+      /*
+      ctx.fillStyle = "green";
+      ctx.fillRect(80, 200, 80, 50);
+      */
+      ctx.fillStyle = "yellow";
+      ctx.font = '20pt Calibri';
+      var message = "Countdown: " + Math.floor( 10- (ball.y / 50) + 2);
+      ctx.fillText(message, 80, 230);
+    }
+    this.draw3 = function(){
+      /*
+      ctx.fillStyle = "green";
+      ctx.fillRect(80, 200, 80, 50);
+      */
+      ctx.fillStyle = "yellow";
+      ctx.font = '20pt Calibri';
+      var message = "Happy New Years!!!!!";
+      ctx.fillText(message, 50, 230);
+    }
+  }
+  var ball = new Ball();
+
+  var countDown = function(){
+    if(ball.y < canvas.height-ball.radius){
+      ball.y++;
+      ball.draw();
+      ball.draw2();
+
+    }else{
+      console.log("HAPPY NEW YEAR!!");
+      clearInterval(timer);
+      ball.draw();
+      ball.draw3();
+    }
+  }
+
+  var timer_set = canvas.height - (2*ball.radius);
+  var timer = setInterval(countDown, 10000/timer_set);
+</script>
+</body>
+</html>

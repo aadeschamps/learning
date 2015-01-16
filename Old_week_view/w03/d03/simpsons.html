@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Simpsons DOM Manipulation</title>
+</head>
+<body>
+	<h1> Simpsons Characters! </h1>
+	<button id="random">Add Random Charaters</button>
+	<ul>
+	</ul>
+
+	<script>
+		var simp_arr = ["Homer", "Marge", "Bart", "Lisa", "Maggie", "Abe"];
+		var list = document.querySelector("ul");
+		simp_arr.forEach(function(elem){
+			var buffer = document.createElement("li");
+			buffer.innerHTML = elem;
+			list.appendChild(buffer);
+		});
+
+		var ran_char = ["Apu", "Moe", "Barney", "Otto", "Nelson"];
+
+		var addRan = function(){
+			var ran = Math.floor(Math.random() * ran_char.length);
+			var buffer = document.createElement("li");
+			buffer.innerHTML = ran_char[ran];
+			list.appendChild(buffer);
+		}
+
+		var button = document.querySelector("#random");
+		button.addEventListener("click", addRan)
+	</script>
+</body>
+</html>

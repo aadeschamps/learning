@@ -1,0 +1,25 @@
+<html>
+<body>
+  <canvas id="the_canvas" width="400" height="400"></canvas>
+  <script>
+    var canvas = document.getElementById('the_canvas');
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = "red";
+    ctx.fillRect (0, 0, 50, 50);
+    ctx.fillStyle = "thistle";
+    ctx.fillRect (12.5, 12.5, 25, 25);
+    ctx.fillStyle = "blue";
+    ctx.fillRect (0, 350, 50, 50);
+    ctx.fillStyle = "red";
+    ctx.fillRect (12.5, 362.5, 25, 25);
+    ctx.fillStyle = "green";
+    ctx.fillRect(350, 350, 50, 50);
+    ctx.fillStyle = "pink";
+    ctx.fillRect (362.5, 362.5, 25, 25);
+    ctx.fillStyle = "salmon";
+    ctx.fillRect(350, 0, 50, 50);
+    ctx.fillStyle = "lime";
+    ctx.fillRect (362.5, 12.5, 25, 25);
+  </script>
+</body>
+</html>
