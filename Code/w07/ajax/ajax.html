@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0 auto;	
+			text-align: center;
+		}
+		html{
+			display: block;
+		}
+		body{
+			margin: 0 auto;
+		}
+		button{
+			display: block;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<input type="text">
+	<button>Get Movie Poster</button>
+	<img>
+	<h1></h1>
+	<p></p>
+	<script>
+	var input = document.querySelector("input");
+	var button = document.querySelector("button");
+	var xhr = new XMLHttpRequest();
+
+	xhr.addEventListener('load',function(){
+		  var d = xhr.responseText;
+		  var parsed = JSON.parse(d);
+		  console.log(parsed);
+		  var img = document.querySelector("img")
+		  img.src = parsed.Poster;
+		  var h1 = document.querySelector("h1");
+		  h1.innerHTML = parsed.Title;
+		  var p = document.querySelector("p");
+		  p.innerHTML = parsed.Plot;
+	});
+
+
+	button.addEventListener("click",function(){
+		// var text = input.value;
+		// var urled = encodeURI(text);
+		var url = "http://omdbapi.com/?t=" + urled;
+		xhr.open("GET", url);
+		xhr.send();
+	});
+
+	
+	</script>
+</body>
+</html>
