@@ -35,19 +35,19 @@
 		  var d = xhr.responseText;
 		  var parsed = JSON.parse(d);
 		  console.log(parsed);
-		  var img = document.querySelector("img")
-		  img.src = parsed.Poster;
+		  // var img = document.querySelector("img")
+		  // img.src = parsed.Poster;
 		  var h1 = document.querySelector("h1");
-		  h1.innerHTML = parsed.Title;
-		  var p = document.querySelector("p");
-		  p.innerHTML = parsed.Plot;
+		  h1.innerHTML = parsed.results[0].user.name.first + " " + parsed.results[0].user.name.last;
+		  var p = document.querySelector("p")
+		  p.innerHTML = parsed.results[0].user.email;
 	});
 
 
 	button.addEventListener("click",function(){
 		// var text = input.value;
 		// var urled = encodeURI(text);
-		var url = "http://omdbapi.com/?t=" + urled;
+		var url = "http://api.randomuser.me/";
 		xhr.open("GET", url);
 		xhr.send();
 	});
