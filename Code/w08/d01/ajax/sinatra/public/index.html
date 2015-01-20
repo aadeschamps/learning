@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+</head>
+<body>
+	<h1> Movies</h1>
+	<ul>
+	</ul>
+
+	<script type="text/javascript">
+		var url = "http://localhost:3000/top_theaters";
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", url);
+		xhr.addEventListener('load',function(e){
+			var obj = JSON.parse(xhr.responseText);
+			var h1 = document.querySelector("h1");
+			h1.innerHTML = obj.msg;
+			// var movies = obj.movies;
+			// var ul = document.querySelector("ul");
+			// movies.forEach(function(movie){
+			// 	var li = document.createElement("li");
+			// 	var insert = movie.name + ": " + movie.rating;
+			// 	li.innerHTML = insert;
+			// 	// console.log(li);
+			// 	ul.appendChild(li);
+			// })
+		});
+		xhr.send();
+	</script>
+</body>
+</html>
