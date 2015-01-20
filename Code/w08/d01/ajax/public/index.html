@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+</head>
+<body>
+	<h1> Movies</h1>
+	<ul>
+	</ul>
+
+	<script type="text/javascript">
+		var url = "http://localhost:4567/top_dvd";
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", url);
+		xhr.addEventListener('load',function(e){
+			var obj = JSON.parse(xhr.responseText);
+			console.log(obj);
+			var movies = obj.movies;
+			console.log(movies);
+			var ul = document.querySelector("ul");
+			movies.forEach(function(movie){
+				var li = document.createElement("li");
+				var insert = movie.name + ": " + movie.rating;
+				console.log(insert);
+				li.innerHTML = insert;
+				// console.log(li);
+				ul.appendChild(li);
+			})
+		});
+		xhr.send();
+	</script>
+</body>
+</html>
