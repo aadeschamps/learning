@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Forms and InstaJAM</title>
+</head>
+<body>
+	<form method="GET" action="/city">
+		<input type="text" name="city">
+		<input type="text" name="state">
+		<input type="submit" value="Submit">
+	</form>
+	<ul>
+		<% pictures.each do |url| %>
+		<li><img src="<%=url%>"></li>
+		<% end %>
+	</ul>
+</body>
+</html>

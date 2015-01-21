@@ -6,5 +6,5 @@ request(url, function(error, response, body){
 		var name = data.results[0].user.name.first;
 		var email = data.results[0].user.email;
 		console.log(name + ": " + email);
-	}	
-})
+	};
+});

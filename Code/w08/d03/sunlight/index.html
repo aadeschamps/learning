@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sunlight API Test</title>
+</head>
+<body>
+	<input type="text" placeholer="Senators Last Name">
+	<button> Find </button>
+	<h3></h3>
+	<ul>
+	</ul>
+	<script type="text/javascript">
+		var button = document.querySelector("button");
+		button.addEventListener("click", function(){
+			var input = document.querySelector("input");
+			var name = input.value;
+			var url = "https://congress.api.sunlightfoundation.com/legislators?apikey=[key]&last_name=" + name + "&fields=twitter_id,bioguide_id";
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", url);
+			xhr.addEventListener('load',function(e){
+				var obj = JSON.parse(xhr.responseText);
+				var h3 = document.querySelector("h3");
+				var handle = obj.results[0].twitter_id;
+				var id = obj.results[0].bioguide_id;
+				h3.innerHTML = handle;
+				bills(id);
+			});
+			xhr.send();
+		});
+		function bills(id){
+			var xhr = new XMLHttpRequest();
+			var url = "https://congress.api.sunlightfoundation.com/bills?apikey=[key]&fields=short_title&sponsor_id=" + id;
+			xhr.open("GET", url);
+			xhr.addEventListener('load',function(e){
+				var obj = JSON.parse(xhr.responseText);
+				var ul = document.querySelector("ul");
+				for(var i = 0; i < 10; i++){
+					var li = document.createElement("li");
+					li.innerHTML = obj.results[i].short_title;
+					ul.appendChild(li);
+				}
+			});
+			xhr.send();
+		}
+	</script>
+</body>
+</html>

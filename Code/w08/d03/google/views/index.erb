@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1V3Iv90cabyxssHCpmvN9XUPW9vE0GN0">
+    </script>
+    
+  </head>
+  <body>
+  	<input type="text" id="city" placeholder="city name">
+    <button>Get Location </button>
+	<div id="map-canvas"></div>
+	<script type="text/javascript">
+      var button = document.querySelector("button");
+      button.addEventListener("click", function(){
+        var input = document.querySelector("#city");
+        var location = input.value;
+        // var uri = encodeURI(location)
+        // console.log(uri);
+        var url = "http://localhost:4567/city/" + location;
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", url);
+		xhr.addEventListener('load',function(e){
+			console.log(xhr.responseText);
+			var obj = JSON.parse(xhr.responseText);
+			console.log(obj);
+			var lat = window.parseFloat(obj.lat);
+			var lng = window.parseFloat(obj.lng);
+			console.log(lat);
+			console.log(lng);
+			var mapOptions = {
+	          center: { lat: lat, lng: lng},
+	          zoom: 12
+	        };
+	        var map = new google.maps.Map(document.getElementById('map-canvas'),
+	            mapOptions);
+		});
+		// var j_loc = JSON.stringify(location);
+		// console.log(j_loc);
+		xhr.send();
+	});
+    </script>
+  </body>
+</html>

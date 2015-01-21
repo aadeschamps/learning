@@ -1,8 +1,8 @@
-var express = require('express');
-var app = express();
+// var express = require('express');
+// var app = express();
 
-app.get('/top_theaters', function(req, res){
-	res.json({msg: "Hello World"});
-});
+// app.get('/top_theaters', function(req, res){
+// 	res.json({msg: "Hello World"});
+// });
 
-app.listen(3000);
+// app.listen(3000);
