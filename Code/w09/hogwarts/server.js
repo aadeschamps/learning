@@ -15,13 +15,15 @@ students = {
 		id: 0,
 		name: "Alex",
 		age: "24",
-		fav_spell: "Anteoculatia"
+		fav_spell: "Anteoculatia",
+		house: ""
 	},
 	1: {
 		id: 1,
 		name: "Danielle",
 		age: "25",
-		fav_spell: "a pretty one"
+		fav_spell: "a pretty one",
+		house: ""
 	}
 }
 var count = 2;
@@ -42,7 +44,8 @@ app.post('/student', function( req, res){
 		id: count,
 		name: req.body.name,
 		age: req.body.age,
-		fav_spell: req.body.spell
+		fav_spell: req.body.spell,
+		house: ""
 	}
 	console.log(student);
 	students[count] = student;
@@ -62,5 +65,29 @@ app.delete('/student/:id', function(req, res){
 	req.method = 'get';
 	res.redirect('/students');
 });
+
+app.post('/sort/:id', function(req, res){
+	var house = sortingHat();
+	var id = parseInt(req.params.id);
+	for (student in students){
+		if(students[student].id === id){
+			students[student].house = house;
+			break;
+		}
+	}
+	req.method = 'get';
+	res.redirect('/students');
+});
+
+app.get('/house/:house_name',function(req, res){
+	var house = req.params.house_name;
+	res.render('house.ejs', {students: students, house: house});
+});
+
+function sortingHat(){
+	var houses = ["Slytherine", "Gryffindor", "Hufflepuff", "Ravenclaw"];
+	return houses[Math.floor(Math.random() * houses.length)]
+}
+
 
 app.listen(3000);

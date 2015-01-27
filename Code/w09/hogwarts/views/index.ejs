@@ -8,7 +8,12 @@
 	<h1> Hogwarts Application List </h1>
 	<ul>
 		<% for( student in students){ %>
-		<li> <%=student %>: <a href="/student/<%=student%>"><%=students[student].name%></a>, Age: <%= students[student].age%> </li>
+		<li> 
+			<%=student %>: <a href="/student/<%=student%>"><%=students[student].name%></a>, Age: <%= students[student].age%> . House: <%= students[student].house%>
+			<% if (students[student].house === ""){%>
+				<form method="post" action="/sort/<%=student%>"><button>Sort</button></form>
+			<% } %>
+		</li>
 		<% } %>
 	</ul>
 	<h3> Apply: </h3>

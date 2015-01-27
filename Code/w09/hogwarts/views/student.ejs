@@ -10,6 +10,11 @@
 	<ul>
 		<li>Age: <%=student.age%> </li>
 		<li>Favorite Spell: <%=student.fav_spell%></li>
+		<li> House: <% if(student.house === ""){%>
+			Not yet sorted!
+			<% }else{%>
+			<%= student.house %>
+			<% } %>
 	</ul>
 	<h3> Update name: </h3>
 	<form method="post" action="/student/<%=student.id%>?_method=put">
