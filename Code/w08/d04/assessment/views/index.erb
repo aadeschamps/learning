@@ -3,16 +3,23 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Assessment w08 d04</title>
+	<style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+	<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=[key]">
+    </script>
 </head>
 <body>
-	
+	<div id="map-canvas"></div>
 	<script type="text/javascript">
 		var mapOptions = {
 	          center: { lat: <%=lat%>, lng: <%=lng%>},
 	          zoom: 12
-	        };
-	        var map = new google.maps.Map(document.getElementById('map-canvas'),
-	            mapOptions);
+	    };
+	    console.log(mapOptions);
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
 	</script>
 </body>
 </html>

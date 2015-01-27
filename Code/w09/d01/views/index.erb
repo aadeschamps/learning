@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>RESTful stuff</title>
+</head>
+<body>
+	<h1> Pets Woo! </h1>
+	<ul>
+	<% pets.each do |key, pet| %>
+		<li><%=pet[:name]%> is a <%=pet[:type]%>. The pet has an id of <a href="/pet/<%=pet[:id]%>"> <%=pet[:id]%> </a></li>
+	<%end%>
+	</ul>
+	
+	<h3> Add a pet here! Woo! </h3>
+	<form method="post" action="/pet">
+		<input type="text" name="name" placeholder="pet name" required>
+		<input type="text" name="type" placeholder="pet type" required>
+		<button> ADD IT! </button>
+	</form>
+</body>
+</html>

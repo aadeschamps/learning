@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>show</title>
+</head>
+<body>
+	<header>
+		<h1> woo! </h1>
+		<a href="/pets"> go home </a>
+	</header>
+	<p> <%= thispet[:name] %> is a <%=thispet[:type] %>
+	</p>
+	<h3> Change <%= thispet[:name] %>'s name here </h3>
+	<form method="post" action="/pet/<%=thispet[:id]%>">
+		<input type="hidden" name="_method" value="put">
+		<input type="text" name="newname" placeholder="new name?" required>
+		<button> UPDATE IT !!!!1!!</button>
+	</form>
+	<h3> Delete <%= thispet[:name] %></h3>
+	<form method="post" action="/pet/<%=thispet[:id]%>">
+		<input type="hidden" name="_method" value="delete">
+		<button> FINISH HIM!!!1!!1! </button>
+	</form>
+</body>
+</html>
