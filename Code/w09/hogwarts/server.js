@@ -56,9 +56,9 @@ app.get('/student/:id', function(req, res){
 	res.render('student.ejs', {student: students[req.params.id]});
 });
 
-app.delete('student/:id', function(req, res){
+app.delete('/student/:id', function(req, res){
 	console.log("hey");
-	// delete students[parseInt(req.params.id)];
+	delete students[parseInt(req.params.id)];
 	req.method = 'get';
 	res.redirect('/students');
 });
