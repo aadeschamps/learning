@@ -64,5 +64,3 @@ app.delete('/student/:id', function(req, res){
 });
 
 app.listen(3000);
-
-
