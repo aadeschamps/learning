@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Student Page</title>
+</head>
+<body>
+	<a href="/students"> Go back </a>
+	<h1> <%=student.name%>'s profile</h1>
+	<ul>
+		<li>Age: <%=student.age%> </li>
+		<li>Favorite Spell: <%=student.fav_spell%></li>
+	</ul>
+	<h3> Update name: </h3>
+	<form method="post" action="/student/<%=student.id%>?_method=put">
+		<!-- <input type="hidden" name="_method" value="put"> -->
+		<input type="text" name="newname" placeholder="new name">
+		<button> Update </button>
+	</form>
+	<h3> Delete current application? </h3>
+	<form method="post" action="/student/<%=student.id%>?_method=delete">
+		<button> Delete </button>
+	</form>
+</body>
+</html>

@@ -7,7 +7,16 @@
 <body>
 	<h1> Hogwarts Application List </h1>
 	<ul>
-		
+		<% for( student in students){ %>
+		<li> <%=student %>: <a href="/student/<%=student%>"><%=students[student].name%></a>, Age: <%= students[student].age%> </li>
+		<% } %>
 	</ul>
+	<h3> Apply: </h3>
+	<form action='/student' method="post">
+		<input type="text" name="name" placeholder='name'>
+		<input type="text" name='age' placeholder='age'>
+		<input type="text" name='spell' placeholder='Favorite Spell'>
+		<button> Apply! </button>
+	</form>
 </body>
 </html>
