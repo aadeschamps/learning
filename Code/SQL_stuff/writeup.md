@@ -13,4 +13,4 @@ A: A schema is a collection of database objects that define the structure of a t
 
 # When you are not specifically adding/deleting or querying your database, is it still running?
 
-A: Yes?
+A: No?
