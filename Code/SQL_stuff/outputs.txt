@@ -1,0 +1,40 @@
+
+sqlite3 tablefun
+
+CREATE TABLE schools (id INTEGER PRIMARY KEY, name TEXT, city TEXT, state TEXT)
+
+ALTER TABLE schools ADD COLUMN zip INTEGER
+
+sqlite> INSERT INTO schools (name, city, state, zip) VALUES ("LVHS","locust valley", "ny", 11560)
+   ...> ;
+sqlite> INSERT INTO schools (name, city, state, zip) VALUES ("LVMS","locust valley", "ny", 11560);
+sqlite> INSERT INTO schools (name, city, state, zip) VALUES ("SBU","Stony Brook", "ny", 11857);
+
+1|LVHS|locust valley|ny|11560
+2|LVMS|locust valley|ny|11560
+3|SBU|Stony Brook|ny|11857
+
+0|id|INTEGER|0||1
+1|name|TEXT|0||0
+2|city|TEXT|0||0
+3|state|TEXT|0||0
+4|zip|INTEGER|0||0
+
+UPDATE schools SET name="Manhattan High"
+
+
+
+
+1|Mr blah|blah@blah.com|math|50
+2|Mr blah2|blah@blah2.com|math|49
+3|Mr blah2|blah@blah2.com|english|49
+4|Mr blah3|blah@blah3.com|science|20
+5|Mr Bilbo|blah@blah4.com|science|111
+6|Mr Young|blah@blah5.com|physics|6
+
+CREATE TABLE teachers (id INTEGER PRIMARY KEY, name TEXT, email TEXT, subject TEXT, age INTEGER);
+
+
+UPDATE teachers SET age=40;
+
+DELETE FROM teachers WHERE subject="math"
