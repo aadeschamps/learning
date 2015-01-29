@@ -1,42 +1,34 @@
 require 'sinatra'
+require 'sqlite3'
 
-pets = {
-	0 => {
-		id: 0,
-		name: "Fluffy",
-		type: "hamster"
-	}
-}
-counter = 1
+db = SQLite3::Database.new "petulance.db"
 
 
 get '/pets' do
+	pets = db.execute("SELECT * FROM pets")
 	erb :index, locals: {pets:pets}
 end
 
 get '/pet/:id' do
-	thispet = pets[params[:id].to_i]
+	id = params[:id].to_i
+	thispet = db.execute("SELECT * FROM pets WHERE id=(?)", id)
 	erb :show, locals: {thispet: thispet}
 end
 
 put '/pet/:id' do
-	pet = pets[params[:id].to_i]
-	pet[:name] = params["newname"]
+	id = params[:id].to_i
+	db.execute("UPDATE pets SET name=(?) WHERE id=(?)", params["newname"], id)
 	redirect '/pets'
 end
 
 post '/pet' do
-	newpet = {
-		id: counter,
-		name: params["name"],
-		type: params["type"]
-	}
-	pets[counter] = newpet
-	counter+=1
+	newpet = [params["name"], params["type"]]
+	db.execute("INSERT INTO pets (name, type) VALUES (?,?)", newpet)
 	redirect '/pets'
 end
 
 delete '/pet/:id' do
-	pets.delete(params[:id].to_i)
+	id = params[:id].to_i
+	db.execute("DELETE FROM pets WHERE id=(?)", id)
 	redirect '/pets'
 end

@@ -9,16 +9,16 @@
 		<h1> woo! </h1>
 		<a href="/pets"> go home </a>
 	</header>
-	<p> <%= thispet[:name] %> is a <%=thispet[:type] %>
+	<p> <%= thispet[0][1] %> is a <%=thispet[0][2] %>
 	</p>
-	<h3> Change <%= thispet[:name] %>'s name here </h3>
-	<form method="post" action="/pet/<%=thispet[:id]%>">
+	<h3> Change <%= thispet[0][1] %>'s name here </h3>
+	<form method="post" action="/pet/<%=thispet[0][0]%>">
 		<input type="hidden" name="_method" value="put">
 		<input type="text" name="newname" placeholder="new name?" required>
 		<button> UPDATE IT !!!!1!!</button>
 	</form>
-	<h3> Delete <%= thispet[:name] %></h3>
-	<form method="post" action="/pet/<%=thispet[:id]%>">
+	<h3> Delete <%= thispet[0][1] %></h3>
+	<form method="post" action="/pet/<%=thispet[0][0]%>">
 		<input type="hidden" name="_method" value="delete">
 		<button> FINISH HIM!!!1!!1! </button>
 	</form>

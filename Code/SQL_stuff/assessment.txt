@@ -1,0 +1,17 @@
+$ sqlite3 IKEA
+
+sqlite> CREATE TABLE chairs (id INTEGER PRIMARY KEY, color TEXT, legs INTEGER);
+
+sqlite> INSERT INTO chairs (color, legs) VALUES ('green', 4);
+sqlite> INSERT INTO chairs (color, legs) VALUES ('blue', 4);
+sqlite> INSERT INTO chairs (color, legs) VALUES ('yellow', 3);
+sqlite> INSERT INTO chairs (color, legs) VALUES ('blue', 3);
+sqlite> INSERT INTO chairs (color, legs) VALUES ('green', 3);
+
+sqlite> SELECT * FROM chairs
+
+sqlite> SELECT * FROM chairs WHERE color='blue';
+
+sqlite> DELETE FROM chairs WHERE id=4;
+
+sqlite> INSERT INTO chairs (color, legs) VALUES ('chartreuse', 2);

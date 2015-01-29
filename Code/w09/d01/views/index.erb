@@ -7,8 +7,8 @@
 <body>
 	<h1> Pets Woo! </h1>
 	<ul>
-	<% pets.each do |key, pet| %>
-		<li><%=pet[:name]%> is a <%=pet[:type]%>. The pet has an id of <a href="/pet/<%=pet[:id]%>"> <%=pet[:id]%> </a></li>
+	<% pets.each do |pet| %>
+		<li><%=pet[1]%> is a <%=pet[2]%>. The pet has an id of <a href="/pet/<%=pet[0]%>"> <%=pet[0]%> </a></li>
 	<%end%>
 	</ul>
 	
