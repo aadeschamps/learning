@@ -11,6 +11,8 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "cors": "~2.5.3",
-    "express": "~4.11.1"
+    "express": "~4.11.1",
+    "b": "~2.0.1",
+    "body-parser": "~1.10.2"
   }
 }
