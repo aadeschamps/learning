@@ -1,63 +1,57 @@
 var express = require('express');
-// var sqlite3 = require('sqlite3');
+var sqlite3 = require('sqlite3').verbose();
 var cors = require('cors');
 var app = express();
 var bodyParser = require('body-parser');
+var db = new sqlite3.Database("petulance.db");
 
-app.use(cors());
-app.use(bodyParser.json({extended: false}));
 
-// app.use(express.static(__dirname + '/public') );
 
-var pets = {
-	1: {
-		id: 1,
-		name: "Smelly Cat",
-		type: "Cat"
-	},
-	2: {
-		id: 2,
-		name: "Marcell",
-		type: "Monkey"
-	}
-};
-
-var numPets = 2;
 
 app.get('/pets', function(req,res){
-	var petsArray = [];
-	Object.keys(pets).forEach(function(key){
-		petsArray.push(pets[key]);
+	db.all("SELECT * FROM pets", function(err,rows){
+		if(err){throw errl}
+			res.json( rows );
 	});
-	res.json(petsArray);
 });
 
 app.post('/pet', function(req, res) {
-  numPets++;
-  console.log(req.body.name);
-  var newPet = {
-    id: numPets,
-    name: req.body.name,
-    type: req.body.type
-  };
-  pets[numPets] = newPet;
-  res.json(newPet);
+	var name = req.body.name;
+	var type = req.body.type;
+
+	db.run("INSERT INTO pets (NAME, TYPE) values (?, ?)", name, type, function(err){
+		if(err) {throw err;}
+		var id = this.lastID;
+		db.get("SELECT * FROM pets WHERE id = ?", id, function(err, row){
+			if( err ) {throw err;}
+			res.json(row);
+		});
+	});
 });
 
 app.delete('/pet/:id', function(req, res){
 	var id = req.params.id;
-	delete pets[id];
-	res.json({deleted: true});
+	db.run("DELETE FROM pets WHERE id= ?", id, function(err){
+		if(err){throw err;}
+		res.json({deleted: true})
+	})
 });
 
 app.put("/pet/:id", function(req, res){
 	var id = req.params.id;
-	pets[id].name = req.body.name;
-	pets[id].type = req.body.type;
-	res.json(pets[id]);
+	var name = req.body.name;
+	var type = req.body.type;
+	db.run("UPDATE pets SET name = ?, type= ? WHERE id= ?", name, type, id,
+		function(err){
+			if(err){throw err;}
+			db.get("SELECT * FROM pets WHERE id= ?", id,
+				function(err, row){
+					if(err){throw err;}
+					res.json(row);
+				});
+		});
 });
 
-// app.put()
 
 app.listen(3000);
 console.log('Port 3000');

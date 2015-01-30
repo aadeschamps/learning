@@ -1,6 +1,8 @@
 var express = require('express');
-var sqlite3 = require('sqlite3');
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database("petulance.db");
 var cors = require('cors');
+var app = express();
 
 app.use(cores());
 
@@ -20,5 +22,8 @@ var pets = {
 var numPets = 2;
 
 app.gets('/pets', function(req,res){
-	var petsArray = [];
-})
+	db.all("SELECT * FROM pets", function(err, rows){
+		if (err){throw err}
+		res.json(rows);
+	})
+});
