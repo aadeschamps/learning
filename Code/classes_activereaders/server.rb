@@ -73,3 +73,7 @@ get("/houses/:id") do
   house = House.find_by({id: params[:id]})
   erb(:"houses/show", { locals: { house: house } })
 end 
+
+post('/houses') do
+  
+end
