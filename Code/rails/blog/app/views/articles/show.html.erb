@@ -1,0 +1,7 @@
+<h1> <%= @article.headline %> </h1>
+<h3>by: <%=@article.author.name %> </h3>
+<%= image_tag @article.photo_url, width: 200 %>
+<p> <%= @article.content %> </p>
+
+<%= link_to 'edit', edit_article_path %>
+<%= link_to 'back', articles_path %>

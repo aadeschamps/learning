@@ -1,0 +1,22 @@
+
+<h1><%= @book.title %></h1>
+ <br>
+<p> by <%= link_to @book.author.name, author_path(@book.author) %> </p>
+<br>
+
+
+<% if @book.status %>
+<p> Status: In</p>
+<%= form_for @book, url:{action: 'update'} do |f| %>
+<%= f.submit 'Check out book' %>
+<% end %>
+<% else %>
+<p> Status: Out</p>
+<%= form_for @book, url:{action: 'update'} do |f| %>
+<%= f.submit 'Return Book' %>
+<% end %>
+<% end %>
+
+<br>	
+<%= link_to 'Return to Main Menu', books_path %> 
+

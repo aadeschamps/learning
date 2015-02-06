@@ -6,6 +6,7 @@ var sqlite3 = require ('sqlite3').verbose();
 var db = new sqlite3.Database("auth.db");
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var bcrypt = require('bcrypt');
 var secret = require('./secret.json').password;
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -28,14 +29,18 @@ app.post('/session', function(req, res){
 	console.log(username);
 	var password = req.body.password;
 	console.log(password);
-	db.get('SELECT * FROM users WHERE username = ? AND password = ?',
-	username, password, function(err, row){
+	db.get('SELECT * FROM users WHERE username = ?',
+	username, function(err, row){
 		if (err) {throw err;}
 		console.log(row);
 		if(row){
-			console.log('hey');
-			req.session.valid_user = true;
-			res.redirect('/secret_page');
+			var passwordM = bcrypt.compareSync(password, row.password);
+			if(passwordM){
+				req.session.valid_user = true;
+				res.redirect('/secret_page');
+			}else{
+				res.redirect('/');
+			}
 		}else{
 			console.log('no');
 			res.redirect('/');
@@ -55,8 +60,9 @@ app.get('/secret_page', function(req, res){
 app.post('/user', function(req, res){
 	var username = req.body.username;
 	var password = req.body.password;
+	var hash = bcrypt.hashSync(password, 10);
 	db.run("INSERT INTO users (username,password) VALUES (?,?)",
-	username, password, function(err){
+	username, hash, function(err){
 		if (err){throw err;}
 		res.redirect('/');
 	});
