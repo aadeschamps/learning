@@ -1,0 +1,9 @@
+<form action= '/session' method='POST'>
+	<label for='password'>
+		password: 
+	</label>
+	<input name='username' type='text'>
+	<input name= 'password' type='password'>
+	<input name= 'authenticity_token' value='<%= form_authenticity_token() %>' type='hidden'>
+	<button> Sign In </button>
+</form>

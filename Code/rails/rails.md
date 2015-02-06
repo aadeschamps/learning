@@ -108,5 +108,33 @@ Validating what is being put into your model is key. Here is how you do it:
 
 ## Partials, Layouts
 
+#### Yields
+
+You can add in yields to your layout pages
+
+``` html
+	<%= yield :footer %>
+```
+Now everytime you have the same thing in your erb's, it inserts them into wherever you put the above code.
+
+You can also import a folder into your .htmt.erb by:
+
+``` html
+	<%= render /layouts/filename, post:@post %>
+```
+You just need a _filename.html.erb in your layouts folder
+
+## Rendering
+
+You can render things other than erb files.
+
+``` ruby
+
+	render plain: 'plain text'
+	render html 'html here'.html_safe
+	render inline: ' erb html can go here'
+	render json someJsonStuff
+
+```
 
 
