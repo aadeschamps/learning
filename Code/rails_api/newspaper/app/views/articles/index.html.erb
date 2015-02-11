@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <% @articles.each do |article| %>
+      <div class="row col-md-12 text-center">
+      <h1><%= link_to article.headline, article_path(article)%></h1>
+      <button class="btn-default" data-toggle='collapse' data-target='#article<%=article.id%>'>Show Content</button>
+      </div>
+      <br>
+      <div class="row collapse col-md-12 text-center" id='article<%=article.id%>'> by
+        <%= link_to article.author.name, author_path(article.author) %>
+        <%= article.content %>
+        <br>
+        <%= image_tag article.photo_url, height:300, class: 'center-block img-circle'%>
+        <br>
+      </div>
+      <br>
+
+    <% end %>
+
+  </body>
+</html>
