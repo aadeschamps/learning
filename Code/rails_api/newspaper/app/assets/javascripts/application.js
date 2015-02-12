@@ -13,9 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require templates
 //= require models
 //= require collections
+//= require templates
 //= require views
 //= require turbolinks
 //= require_tree .

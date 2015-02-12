@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
     if @article
       render json: @article
     end
-    redirect_to article_path(@article)
+
   end
 
   def show
