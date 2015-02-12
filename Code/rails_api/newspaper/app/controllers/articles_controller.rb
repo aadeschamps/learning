@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
   protect_from_forgery with: :null_session
+
+  def spa
+  end
+
   def index
     @articles = Article.all
     respond_to do |format|
@@ -14,7 +18,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article= Article.create(article_params)
-    if @article.save
+    if @article
       render json: @article
     end
     redirect_to article_path(@article)

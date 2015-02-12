@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'articles#index'
+  get '/articles/spa' => 'articles#spa'
   resources :articles
   resources :authors
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
