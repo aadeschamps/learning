@@ -9,17 +9,17 @@ var articles = new ArticlesCollection();
 
 
 
-var newArticle = new Article({
-  headline: "blah blah blah attack!",
-  content: "After spiders killed my parents, I decided to become a crime fighter",
-  photo_url: "http://img3.wikia.nocookie.net/__cb20100419210629/marvel_dc/images/1/14/Superman_0002.jpg"
-});
-console.log(newArticle);
+// var newArticle = new Article({
+//   headline: "blah blah blah attack!",
+//   content: "After spiders killed my parents, I decided to become a crime fighter",
+//   photo_url: "http://img3.wikia.nocookie.net/__cb20100419210629/marvel_dc/images/1/14/Superman_0002.jpg"
+// });
+// console.log(newArticle);
 
-articles.create(newArticle, {
-	success: function(response){
-		newArticle.set('id', response.toJSON().id);
-		console.log(articles.toJSON());
-		articles.save;
-	}
-});
+// articles.create(newArticle, {
+// 	success: function(response){
+// 		newArticle.set('id', response.toJSON().id);
+// 		console.log(articles.toJSON());
+// 		articles.save;
+// 	}
+// });

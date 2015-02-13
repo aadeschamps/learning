@@ -1,4 +1,3 @@
-var templates = {};
 
 show_one = [
 	'<h3><a href="/articles/<%=article.id%>"><%=article.headline%></a></h3>',
@@ -19,7 +18,7 @@ var ArticlesView = Backbone.View.extend({
 	el: '#all-articles',
 
 	initialize: function(){
-		this.listenTo(this.collection, 'all', this.render);
+		this.listenTo(this.collection, 'sync', this.render);
 	},
 
 	render: function(){
@@ -52,11 +51,12 @@ var CreateArticleView = Backbone.View.extend({
 		var headlineField = $('#newArticleHeadline');
 		var contentField = $('#newArticleContent');
 		var photoField = $('#newArticlePhoto');
-		this.collection.create({
+		var newArticle = new Article({
 			headline: headlineField.val(),
 			content: contentField.val(),
 			photo_url: photoField.val()
 		});
+		console.log(this.collection.create(newArticle));
 		headlineField.val('');
 		contentField.val('');
 		photoField.val('');

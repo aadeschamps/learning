@@ -24,7 +24,9 @@ var Article = Backbone.Model.extend({
 		if(attr.content === undefined){
 			return 'no content';
 		}
-	}
+	},
+
+	urlroot: "http://localhost:3000/posts"
 })
 
 
